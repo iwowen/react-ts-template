@@ -35,7 +35,7 @@ module.exports = {
 ```json
 ...
 "scripts": {
-    "build": "webpack --config ./scripts/config/ webpack.common.js"
+    "build": "webpack --config ./scripts/config/webpack.common.js"
 },
 ...
 ```
