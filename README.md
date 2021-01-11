@@ -32,10 +32,18 @@ module.exports = {
 
 4. 在 package.json 中编写 npm 命令
 
+windows 不支持 NODE_ENV=development 的设置方式。
+所以先安装 cross-env
+
+```shell
+npm install cross-env -D
+```
+
 ```json
+// pacakge.json
 ...
 "scripts": {
-    "build": "webpack --config ./scripts/config/webpack.common.js"
+    "build": "cross-env NODE_ENV=production webpack --config ./scripts/config/webpack.common.js"
 },
 ...
 ```
