@@ -83,32 +83,27 @@ module: {
 
 - 在根目录创建 `.babelrc` 配置文件
 
-```javascript
-{
-  // * 执行顺序从后往前。
-  "presets": [
-    [
-      // * 使用 polyfill 代替一些浏览器不能识别的 ES 新的 API。
-      "@babel/preset-env",
-      {
-        // ! 防止 babel 将任何模块类型都转译成 CommonJS 类型，导致 tree-shaking 失效问题。
-        "modules": false
-      }
-    ],
-    "@babel/preset-react",
-    "@babel/preset-typescript"
-  ],
-  "plugins": [
-    [
-      "@babel/plugin-transform-runtime",
-      {
-        "corejs": {
-          "version": 3,
-          "proposals": true
-        },
-        "useESModules": true
-      }
-    ]
-  ]
-}
+6. 使用 HtmlWebpackPlugin 解析 html 文件
+
+安装
+
+```shell
+npm install html-webpack-plugin -D
 ```
+
+配置
+
+```javascript
+plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(ROOTPATH, "public/index.html"),
+      filename: "index.html",
+      minify: {
+        removeAttributeQuotes: false, //是否删除属性的双引号
+        collapseWhitespace: false, //是否折叠空白
+      },
+    }),
+  ],
+```
+
+通过 HtmlWebpackPlugin 插件的 config 属性能够设置 html 内数据。

@@ -1,8 +1,11 @@
 const webpack = require("webpack");
 const path = require("path");
-const { ROOTPATH } = require("../constants");
+const { ROOTPATH, isDev } = require("../constants");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { htmlConfig } = require("./config");
 
 module.exports = {
+  mode: isDev ? "development" : "production",
   entry: {
     app: path.resolve(ROOTPATH, "src/index.js"),
   },
@@ -19,4 +22,15 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(ROOTPATH, "public/index.html"),
+      filename: "index.html",
+      minify: {
+        removeAttributeQuotes: false, //是否删除属性的双引号
+        collapseWhitespace: false, //是否折叠空白
+      },
+      config: htmlConfig[isDev ? "dev" : "build"],
+    }),
+  ],
 };
