@@ -47,3 +47,68 @@ npm install cross-env -D
 },
 ...
 ```
+
+5. js 转为低版本代码 `babel`
+
+- 推荐
+  [不可错过的 Babel7 知识](https://juejin.im/post/6844904008679686152)
+
+- 安装 babel-loader
+
+```shell
+npm install babel-loader -D
+```
+
+- 还需要一些配置
+
+```shell
+npm install @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript @babel/plugin-transform-runtime -D
+
+npm install @babel/runtime @babel/runtime-corejs3
+```
+
+- 添加 webpack 配置
+
+```javascript
+module: {
+    rules: [
+        {
+        test: /\.jsx?$/,
+        use: ["babel-loader"],
+        exclude: /node_modules/, //排除 node_modules 目录
+        },
+    ],
+},
+```
+
+- 在根目录创建 `.babelrc` 配置文件
+
+```javascript
+{
+  // * 执行顺序从后往前。
+  "presets": [
+    [
+      // * 使用 polyfill 代替一些浏览器不能识别的 ES 新的 API。
+      "@babel/preset-env",
+      {
+        // ! 防止 babel 将任何模块类型都转译成 CommonJS 类型，导致 tree-shaking 失效问题。
+        "modules": false
+      }
+    ],
+    "@babel/preset-react",
+    "@babel/preset-typescript"
+  ],
+  "plugins": [
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "corejs": {
+          "version": 3,
+          "proposals": true
+        },
+        "useESModules": true
+      }
+    ]
+  ]
+}
+```
