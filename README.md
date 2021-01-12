@@ -107,3 +107,19 @@ plugins: [
 ```
 
 通过 HtmlWebpackPlugin 插件的 config 属性能够设置 html 内数据。
+
+7. 添加本体服务器
+
+安装
+
+```shell
+npm install webpack-dev-server -D
+```
+
+修改运行命令
+
+```shell
+"dev": "cross-env NODE_ENV=production webpack-dev-server --config ./scripts/config/webpack.dev.js",
+```
+
+使用 webpack.dev.js 保存开发配置，使用 webpack-merge 合并基础配置
