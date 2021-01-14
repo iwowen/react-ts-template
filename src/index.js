@@ -1,5 +1,3 @@
-console.log("hello");
-
 class Person {
   constructor() {
     this.name = "小明";
@@ -10,4 +8,5 @@ class Person {
   }
 }
 
+console.log("hello");
 const p = new Person();

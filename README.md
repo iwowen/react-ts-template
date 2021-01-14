@@ -123,3 +123,9 @@ npm install webpack-dev-server -D
 ```
 
 使用 webpack.dev.js 保存开发配置，使用 webpack-merge 合并基础配置
+
+8. devtool
+
+`devtool`用于方便开发调试代码。
+这里在 `webpack.dev.js` 中配置`devtool`为`cheap-module-eval-source-map`，可定位到行。
+devtool 说明: [https://www.cnblogs.com/tugenhua0707/p/9464984.html](https://www.cnblogs.com/tugenhua0707/p/9464984.html)
