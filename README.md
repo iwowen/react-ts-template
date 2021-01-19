@@ -112,3 +112,5 @@ npm install style-loader sass-loader css-loader postcss-loader autoprefixer node
 ```
 
 10. url-loader 解决图片文字引入问题
+
+11. 每次打包前清空 dist 目录 (clean-webpack-plugin)

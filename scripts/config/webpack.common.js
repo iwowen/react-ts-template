@@ -3,16 +3,9 @@ const path = require("path");
 const { ROOTPATH, isDev } = require("../constants");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const { htmlConfig } = require("../config");
-const {
-  jsxRule,
-  cssRule,
-  scssRule,
-  lessRule,
-  imageRule,
-  textRule,
-  htmlRule,
-} = require("./rules.config");
+const Rules = require("./rules.config");
 
 module.exports = {
   mode: isDev ? "development" : "production",
@@ -26,16 +19,17 @@ module.exports = {
   },
   module: {
     rules: [
-      jsxRule,
-      cssRule,
-      scssRule,
-      lessRule,
-      imageRule,
-      textRule,
-      htmlRule,
+      Rules.jsxRule,
+      Rules.cssRule,
+      Rules.scssRule,
+      Rules.lessRule,
+      Rules.imageRule,
+      Rules.textRule,
+      // Rules.htmlRule, // html-withimg-loader处理后无法在html中使用ejs等语法
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(ROOTPATH, "public/index.html"),
       filename: "index.html",
