@@ -11,6 +11,7 @@ const {
   lessRule,
   imageRule,
   textRule,
+  htmlRule,
 } = require("./rules.config");
 
 module.exports = {
@@ -24,7 +25,15 @@ module.exports = {
     publicPath: "",
   },
   module: {
-    rules: [jsxRule, cssRule, scssRule, lessRule, imageRule, textRule],
+    rules: [
+      jsxRule,
+      cssRule,
+      scssRule,
+      lessRule,
+      imageRule,
+      textRule,
+      htmlRule,
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({

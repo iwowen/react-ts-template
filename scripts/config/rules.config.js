@@ -90,6 +90,12 @@ const textRule = {
   exclude: /node_modules/,
 };
 
+// 解决html文件中引入图片的问题
+const htmlRule = {
+  test: /.html$/,
+  use: "html-withimg-loader",
+};
+
 module.exports = {
   jsxRule,
   cssRule,
@@ -97,4 +103,5 @@ module.exports = {
   lessRule,
   imageRule,
   textRule,
+  htmlRule,
 };
