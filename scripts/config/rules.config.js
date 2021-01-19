@@ -1,4 +1,5 @@
 const { isDev } = require("../constants");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 /**
  * js 和 jsx的loader
@@ -8,13 +9,12 @@ const jsxRule = {
   use: ["babel-loader"],
   exclude: /node_modules/, //排除 node_modules 目录
 };
-
 /**
  * css 公共规则
  */
 function getBaseCssRules(importLoaders = 1) {
   return [
-    "style-loader",
+    isDev ? "style-loader" : MiniCssExtractPlugin.loader,
     {
       loader: "css-loader",
       options: {
@@ -49,8 +49,52 @@ const scssRule = {
   exclude: /node_modules/,
 };
 
+const lessRule = {
+  test: /\.less$/,
+  use: [...getBaseCssRules(2), "less-loader"],
+  exclude: /node_modules/,
+};
+
+/**
+ * 图片文字处理
+ */
+
+const imageRule = {
+  test: /\.(png|jpg|gif|jpeg|webp|svg)$/,
+  use: [
+    {
+      loader: "url-loader",
+      options: {
+        limit: 10240, //10K
+        name: "[name].[contenthash:8].[ext]",
+        outputPath: "assets/images",
+        // esModule 设置为 false，否则，<img src={require('XXX.jpg')} /> 会出现 <img src=[Module Object] />
+        esModule: false,
+      },
+    },
+  ],
+  exclude: /node_modules/,
+};
+
+const textRule = {
+  test: /\.(ttf|woff|woff2|eot|otf)$/,
+  use: [
+    {
+      loader: "url-loader",
+      options: {
+        name: "[name].[contenthash:8].[ext]",
+        outputPath: "assets/fonts",
+      },
+    },
+  ],
+  exclude: /node_modules/,
+};
+
 module.exports = {
   jsxRule,
   cssRule,
   scssRule,
+  lessRule,
+  imageRule,
+  textRule,
 };

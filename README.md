@@ -110,3 +110,5 @@ devtool 说明: [https://www.cnblogs.com/tugenhua0707/p/9464984.html](https://ww
 ```shell
 npm install style-loader sass-loader css-loader postcss-loader autoprefixer node-sass -D
 ```
+
+10. url-loader 解决图片文字引入问题

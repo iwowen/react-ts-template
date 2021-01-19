@@ -12,3 +12,4 @@ console.log("hello");
 const p = new Person();
 
 import "./main.scss";
+import "./a";
