@@ -81,7 +81,7 @@ npm install html-webpack-plugin -D
 
 通过 HtmlWebpackPlugin 插件的 config 属性能够设置 html 内数据。
 
-7. 添加本体服务器
+7. 添加本地服务器
 
 安装
 
@@ -114,3 +114,5 @@ npm install style-loader sass-loader css-loader postcss-loader autoprefixer node
 10. url-loader 解决图片文字引入问题
 
 11. 每次打包前清空 dist 目录 (clean-webpack-plugin)
+
+12. 拷贝 public 下静态文件（copy-webpack-plugin）

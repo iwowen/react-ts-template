@@ -4,6 +4,7 @@ const { ROOTPATH, isDev } = require("../constants");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { htmlConfig } = require("../config");
 const Rules = require("./rules.config");
 
@@ -38,6 +39,19 @@ module.exports = {
         collapseWhitespace: false, //是否折叠空白
       },
       config: htmlConfig[isDev ? "dev" : "build"],
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          context: path.resolve(ROOTPATH, "./public"),
+          from: "*",
+          to: path.resolve(ROOTPATH, "./dist"),
+          toType: "dir",
+          globOptions: {
+            ignore: ["**/index.html"],
+          },
+        },
+      ],
     }),
     !isDev &&
       // * css 样式拆分，抽离公共代码。
