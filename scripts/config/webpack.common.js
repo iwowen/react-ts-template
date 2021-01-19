@@ -2,7 +2,8 @@ const webpack = require("webpack");
 const path = require("path");
 const { ROOTPATH, isDev } = require("../constants");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { htmlConfig } = require("./config");
+const { htmlConfig } = require("../config");
+const { jsxRule, cssRule, scssRule } = require("./rules.config");
 
 module.exports = {
   mode: isDev ? "development" : "production",
@@ -14,13 +15,7 @@ module.exports = {
     path: path.resolve(ROOTPATH, "dist"),
   },
   module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        use: ["babel-loader"],
-        exclude: /node_modules/, //排除 node_modules 目录
-      },
-    ],
+    rules: [jsxRule, cssRule, scssRule],
   },
   plugins: [
     new HtmlWebpackPlugin({

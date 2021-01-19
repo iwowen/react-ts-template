@@ -1,6 +1,6 @@
-# electron-react-template
+# react-template
 
-本项目使用 react + typescript 开发，通过 electron 打包为桌面应用。
+本项目基于 webpack 搭建 react 模版
 
 ## 初始化 webpack 项目
 
@@ -67,20 +67,6 @@ npm install @babel/core @babel/preset-env @babel/preset-react @babel/preset-type
 npm install @babel/runtime @babel/runtime-corejs3
 ```
 
-- 添加 webpack 配置
-
-```javascript
-module: {
-    rules: [
-        {
-        test: /\.jsx?$/,
-        use: ["babel-loader"],
-        exclude: /node_modules/, //排除 node_modules 目录
-        },
-    ],
-},
-```
-
 - 在根目录创建 `.babelrc` 配置文件
 
 6. 使用 HtmlWebpackPlugin 解析 html 文件
@@ -91,20 +77,7 @@ module: {
 npm install html-webpack-plugin -D
 ```
 
-配置
-
-```javascript
-plugins: [
-    new HtmlWebpackPlugin({
-      template: path.resolve(ROOTPATH, "public/index.html"),
-      filename: "index.html",
-      minify: {
-        removeAttributeQuotes: false, //是否删除属性的双引号
-        collapseWhitespace: false, //是否折叠空白
-      },
-    }),
-  ],
-```
+````
 
 通过 HtmlWebpackPlugin 插件的 config 属性能够设置 html 内数据。
 
@@ -114,7 +87,7 @@ plugins: [
 
 ```shell
 npm install webpack-dev-server -D
-```
+````
 
 修改运行命令
 
@@ -129,3 +102,11 @@ npm install webpack-dev-server -D
 `devtool`用于方便开发调试代码。
 这里在 `webpack.dev.js` 中配置`devtool`为`cheap-module-eval-source-map`，可定位到行。
 devtool 说明: [https://www.cnblogs.com/tugenhua0707/p/9464984.html](https://www.cnblogs.com/tugenhua0707/p/9464984.html)
+
+9. 样式文件支持
+
+安装依赖，然后配置 loader
+
+```shell
+npm install style-loader sass-loader css-loader postcss-loader autoprefixer node-sass -D
+```

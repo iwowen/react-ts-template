@@ -10,3 +10,5 @@ class Person {
 
 console.log("hello");
 const p = new Person();
+
+import "./main.scss";
