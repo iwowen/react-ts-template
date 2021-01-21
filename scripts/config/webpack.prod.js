@@ -2,10 +2,10 @@ const { shouldOpenAnalyzer } = require("../constants");
 const { merge } = require("webpack-merge");
 const common = require("./webpack.common.js");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 module.exports = merge(common, {
   mode: "production",
-  devtool: "none",
   plugins: [
     // * 打包前清理上一次的 dist 文件夹。
     new CleanWebpackPlugin(),

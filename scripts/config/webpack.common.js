@@ -9,7 +9,6 @@ const Rules = require("./rules.config");
 const WebpackBar = require("webpackbar");
 
 module.exports = {
-  mode: isDev ? "development" : "production",
   entry: {
     app: path.resolve(ROOTPATH, "src/index.js"),
   },
