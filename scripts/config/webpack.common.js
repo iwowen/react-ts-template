@@ -3,10 +3,10 @@ const path = require("path");
 const { ROOTPATH, isDev } = require("../constants");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { htmlConfig } = require("../config");
 const Rules = require("./rules.config");
+const WebpackBar = require("webpackbar");
 
 module.exports = {
   mode: isDev ? "development" : "production",
@@ -30,7 +30,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(ROOTPATH, "public/index.html"),
       filename: "index.html",
@@ -52,6 +51,11 @@ module.exports = {
           },
         },
       ],
+    }),
+    // * 控制台显示编译/打包进度。
+    new WebpackBar({
+      name: "build",
+      color: "#fa8c16",
     }),
     !isDev &&
       // * css 样式拆分，抽离公共代码。

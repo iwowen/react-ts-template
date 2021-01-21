@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./scripts/config/webpack.dev.js",
-        "build": "cross-env NODE_ENV=production webpack --config ./scripts/config/webpack.common.js"
+        "build": "cross-env NODE_ENV=production webpack --config ./scripts/config/webpack.prod.js"
     },
     "keywords": [
         "electron",
@@ -41,7 +41,8 @@
         "url-loader": "^4.1.1",
         "webpack": "^5.12.3",
         "webpack-cli": "^3.3.12",
-        "webpack-dev-server": "^3.11.1"
+        "webpack-dev-server": "^3.11.1",
+        "webpackbar": "^5.0.0-3"
     },
     "dependencies": {
         "@babel/runtime": "^7.12.5",
