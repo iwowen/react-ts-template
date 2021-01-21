@@ -1,15 +1,5 @@
-class Person {
-  constructor() {
-    this.name = "小明";
-    this.sex = "男";
-  }
-  getName() {
-    return this.name;
-  }
-}
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./app";
 
-console.log("hello");
-const p = new Person();
-
-import "./main.scss";
-import "./a";
+ReactDOM.render(<App />, document.getElementById("app"));

@@ -17,6 +17,14 @@ module.exports = {
     path: path.resolve(ROOTPATH, "dist"),
     publicPath: "",
   },
+  resolve: {
+    // * 配置后引入模块时，不需要加入后缀。
+    extensions: [".tsx", ".jsx", ".ts", ".js", ".json"],
+    // * 文件别名配置，需同步 tsconfig.json 中的映射路径配置。
+    alias: {
+      Src: path.resolve(ROOTPATH, "./src"),
+    },
+  },
   module: {
     rules: [
       Rules.jsxRule,
