@@ -9,6 +9,12 @@ const jsxRule = {
   use: ["babel-loader"],
   exclude: /node_modules/, //排除 node_modules 目录
 };
+
+const tsxRule = {
+  test: /\.tsx?$/,
+  use: ["babel-loader"],
+  exclude: /node_modules/, //排除 node_modules 目录
+};
 /**
  * css 公共规则
  */
@@ -104,4 +110,5 @@ module.exports = {
   imageRule,
   textRule,
   htmlRule,
+  tsxRule,
 };

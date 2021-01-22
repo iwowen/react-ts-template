@@ -10,7 +10,7 @@ const WebpackBar = require("webpackbar");
 
 module.exports = {
   entry: {
-    app: path.resolve(ROOTPATH, "src/index.js"),
+    app: path.resolve(ROOTPATH, "src/index.tsx"),
   },
   output: {
     filename: "js/[name].js",
@@ -19,7 +19,7 @@ module.exports = {
   },
   resolve: {
     // * 配置后引入模块时，不需要加入后缀。
-    extensions: [".tsx", ".jsx", ".ts", ".js", ".json"],
+    extensions: [".tsx", ".ts", ".js", ".json"],
     // * 文件别名配置，需同步 tsconfig.json 中的映射路径配置。
     alias: {
       Src: path.resolve(ROOTPATH, "./src"),
@@ -27,6 +27,7 @@ module.exports = {
   },
   module: {
     rules: [
+      Rules.tsxRule,
       Rules.jsxRule,
       Rules.cssRule,
       Rules.scssRule,
@@ -72,4 +73,8 @@ module.exports = {
         ignoreOrder: false,
       }),
   ].filter(Boolean),
+  externals: {
+    react: "React",
+    "react-dom": "ReactDOM",
+  },
 };
