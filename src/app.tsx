@@ -3,6 +3,7 @@ import './app.scss';
 
 const App: React.FunctionComponent = () => {
   const a = '123';
+
   return (
     <div>
       hello world
