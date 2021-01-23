@@ -1,10 +1,14 @@
 import React from 'react';
-import './app.scss'
+import './app.scss';
 
-const a:string = '123'
-
-function App() {
-  return (<div>hello world</div>);
-}
+const App: React.FunctionComponent = () => {
+  const a = '123';
+  return (
+    <div>
+      hello world
+      {a}
+    </div>
+  );
+};
 
 export default App;
