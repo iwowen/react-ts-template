@@ -19,12 +19,12 @@ npm install webpack webpack-cli -D
 ```javascript
 module.exports = {
   entry: {
-    app: path.resolve(ROOTPATH, "src/index.js"),
+    app: path.resolve(ROOTPATH, 'src/index.js')
   },
   output: {
-    filename: "js/[name].js",
-    path: path.resolve(ROOTPATH, "dist"),
-  },
+    filename: 'js/[name].js',
+    path: path.resolve(ROOTPATH, 'dist')
+  }
 };
 ```
 
