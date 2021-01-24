@@ -27,5 +27,5 @@ module.exports = {
       }
     ]
   },
-  ignoreFiles: ['node_modules/**/*', 'build/**/*', 'dist/**/*']
+  ignoreFiles: ['node_modules/**/*', 'scripts/**/*', 'dist/**/*']
 };
