@@ -1,7 +1,7 @@
 {
-  "name": "electron-react-template",
+  "name": "react-template",
   "version": "1.0.0",
-  "description": "基于react和electron，用于生成桌面应用。",
+  "description": "react模板",
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./scripts/config/webpack.dev.js",
@@ -11,11 +11,8 @@
     "lint-stylelint": "stylelint --config .stylelintrc.js src/**/*.{css,scss}"
   },
   "keywords": [
-    "electron",
     "react",
-    "wasm",
-    "typescript",
-    "webassembly"
+    "typescript"
   ],
   "author": "taowen",
   "license": "MIT",
