@@ -1,15 +1,19 @@
 import React from 'react';
+import { Layout } from 'antd';
 import './app.scss';
+import CuMenu from './layout/CuMenu';
 
-const App: React.FunctionComponent = () => {
-  const a = '123';
+const { Sider, Content } = Layout;
 
-  return (
-    <div>
-      hello world
-      {a}
-    </div>
-  );
-};
+const App: React.FunctionComponent = () => (
+  <Layout className='layout-wrap'>
+    <Sider width={256}>
+      <CuMenu />
+    </Sider>
+    <Layout>
+      <Content>Content</Content>
+    </Layout>
+  </Layout>
+);
 
 export default App;

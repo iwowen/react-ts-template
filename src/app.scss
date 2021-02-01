@@ -1,4 +1,5 @@
-html {
-  display: flex;
-  background-color: rgb(173, 243, 255);
+@import '~antd/dist/antd.css';
+#app,
+.layout-wrap {
+  height: 100%;
 }
