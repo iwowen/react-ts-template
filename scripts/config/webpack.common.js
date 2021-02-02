@@ -22,7 +22,7 @@ module.exports = {
     extensions: [".tsx", ".ts", ".js", ".json"],
     // * 文件别名配置，需同步 tsconfig.json 中的映射路径配置。
     alias: {
-      Src: path.resolve(ROOTPATH, "./src"),
+      '@': path.resolve(ROOTPATH, "./src"),
     },
   },
   module: {

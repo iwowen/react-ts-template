@@ -1,14 +1,14 @@
 import React from 'react';
 import { Layout } from 'antd';
 import './app.scss';
-import CuMenu from './layout/CuMenu';
+import LeftSideBar from '@/layouts/LeftSideBar';
 
 const { Sider, Content } = Layout;
 
 const App: React.FunctionComponent = () => (
   <Layout className='layout-wrap'>
     <Sider width={256}>
-      <CuMenu />
+      <LeftSideBar />
     </Sider>
     <Layout>
       <Content>Content</Content>

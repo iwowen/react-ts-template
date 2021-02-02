@@ -35,6 +35,9 @@ module.exports = {
       node: {
         extensions: ['.tsx', '.ts', '.js', '.json']
       },
+      webpack: {
+        config: './scripts/config/webpack.common.js'
+      },
       typescript: {}
     }
   },
@@ -115,6 +118,7 @@ module.exports = {
     quotes: [ERROR, 'single'],
     semi: [ERROR, 'always'],
     'no-use-before-define': 'off',
-    '@typescript-eslint/no-use-before-define': ['error']
+    '@typescript-eslint/no-use-before-define': ['error'],
+    'react/prefer-stateless-function': OFF
   }
 };

@@ -1,4 +1,4 @@
-import { Divider, Menu } from 'antd';
+import { Menu } from 'antd';
 import React from 'react';
 import './index.module.scss';
 
@@ -8,7 +8,7 @@ const { SubMenu } = Menu;
 
 // const CuMenu: React.FunctionComponent = () => (<div>dhd</div>);
 
-class CuMenu extends React.Component {
+class LeftSideBar extends React.Component {
   handleClick = (e: any) => {
     console.log('click', e);
   };
@@ -52,4 +52,4 @@ class CuMenu extends React.Component {
   }
 }
 
-export default CuMenu;
+export default LeftSideBar;
