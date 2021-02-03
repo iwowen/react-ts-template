@@ -30,8 +30,11 @@ module.exports = {
       Rules.tsxRule,
       Rules.jsxRule,
       Rules.cssRule,
+      Rules.nodeCssRule,
       Rules.scssRule,
+      Rules.scssModuleRule,
       Rules.lessRule,
+      Rules.lessModuleRule,
       Rules.imageRule,
       Rules.textRule,
       // Rules.htmlRule, // html-withimg-loader处理后无法在html中使用ejs等语法

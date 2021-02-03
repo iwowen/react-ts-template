@@ -1,8 +1,7 @@
 import { Menu } from 'antd';
 import React from 'react';
-import './index.module.scss';
-
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
+import styles from './index.module.scss';
 
 const { SubMenu } = Menu;
 
@@ -22,6 +21,7 @@ class LeftSideBar extends React.Component {
         defaultOpenKeys={['sub1']}
         theme='dark'
         mode='inline'
+        className={styles.menuWrap}
       >
         <SubMenu key='sub1' icon={<MailOutlined />} title='Navigation One'>
           <Menu.ItemGroup key='g1' title='Item 1'>

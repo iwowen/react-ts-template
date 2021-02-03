@@ -1,5 +1,9 @@
-@import '~antd/dist/antd.css';
-#app,
+@import '@/assets/css/reset.scss';
+html,
+body,
+#app {
+  height: 100%;
+}
 .layout-wrap {
   height: 100%;
 }

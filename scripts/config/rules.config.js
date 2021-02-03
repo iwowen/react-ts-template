@@ -18,13 +18,15 @@ const tsxRule = {
 /**
  * css 公共规则
  */
-function getBaseCssRules(importLoaders = 1) {
+function getBaseCssRules(importLoaders = 1, modules = false) {
   return [
     isDev ? "style-loader" : MiniCssExtractPlugin.loader,
     {
       loader: "css-loader",
       options: {
+        modules: modules,
         importLoaders,
+        sourceMap: isDev,
       },
     },
     {
@@ -49,16 +51,42 @@ const cssRule = {
   exclude: /node_modules/,
 };
 
+// * 单独处理 antd 样式，避免模块化 css 文件影响。
+const nodeCssRule = {
+  test: /\.css$/,
+  use: [
+    'style-loader',
+    {
+      loader: 'css-loader',
+      options: {
+        sourceMap: isDev
+      }
+    }
+  ],
+  exclude: /src/
+}
+
 const scssRule = {
   test: /\.(sc|sa)ss$/,
   use: [...getBaseCssRules(2), "sass-loader"],
-  exclude: /node_modules/,
+  exclude: /\.module\.(sc|sa)ss$/,
 };
 
 const lessRule = {
   test: /\.less$/,
   use: [...getBaseCssRules(2), "less-loader"],
-  exclude: /node_modules/,
+  exclude: /\.module\.less$/,
+};
+
+// modules
+const scssModuleRule = {
+  test: /\.module\.(sc|sa)ss$/,
+  use: [...getBaseCssRules(2, true), "sass-loader"],
+};
+
+const lessModuleRule = {
+  test: /\.module\.less$/,
+  use: [...getBaseCssRules(2, true), "less-loader"],
 };
 
 /**
@@ -105,8 +133,11 @@ const htmlRule = {
 module.exports = {
   jsxRule,
   cssRule,
+  nodeCssRule,
   scssRule,
+  scssModuleRule,
   lessRule,
+  lessModuleRule,
   imageRule,
   textRule,
   htmlRule,
