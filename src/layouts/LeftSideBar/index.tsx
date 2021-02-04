@@ -9,10 +9,12 @@ import styles from './index.module.scss';
 const { SubMenu } = Menu;
 
 // 将路径转化为key
-const withRouteKey = (path?: string | string[]): string => {
+const withRouteKey = (path?: string | string[], slice?: number): string => {
   // 一般只是字符串
-  if (Array.isArray(path)) return path.join().replaceAll('/', '_');
-  if (typeof path === 'string') return path.replaceAll('/', '_');
+  if (typeof path === 'string') {
+    const arr: string[] = path.split('/');
+    return slice !== undefined ? arr.slice(0, slice).join('_') : arr.join('_');
+  }
   // 防止出现没有path的情况
   return String(Math.random()).slice(-6);
 };
@@ -38,14 +40,17 @@ const MenuItem: React.FunctionComponent<any> = (props: any) => {
 
 interface LeftSideState {
   selectedKey: string;
+  openKey: string;
 }
 
 class LeftSideBar extends React.Component<RouteComponentProps, LeftSideState> {
   constructor(props: RouteComponentProps) {
     super(props);
     this.state = {
-      selectedKey: withRouteKey(props.location.pathname)
+      selectedKey: withRouteKey(props.location.pathname),
+      openKey: withRouteKey(props.location.pathname, -1)
     };
+    console.log(props);
   }
 
   render() {
@@ -53,7 +58,7 @@ class LeftSideBar extends React.Component<RouteComponentProps, LeftSideState> {
       <Menu
         style={{ width: 256 }}
         defaultSelectedKeys={[this.state.selectedKey]}
-        defaultOpenKeys={['sub1']}
+        defaultOpenKeys={[this.state.openKey]}
         theme='dark'
         mode='inline'
         className={styles.menuWrap}
